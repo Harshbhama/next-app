@@ -17,11 +17,19 @@
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
+  /* color: rgb(var(--foreground-rgb)); */
   /* background: linear-gradient(
       to bottom,
       transparent,
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb)); */
+}
+.videos-list{
+  width: 50%;
+  margin: auto;
+ 
+}
+.videos-list:p{
+  text-align: center;
 }

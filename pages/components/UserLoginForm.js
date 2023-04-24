@@ -1,15 +1,22 @@
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import userLogin from '../ApiCalls/userLogin';
+import { useRouter } from 'next/navigation';
 
 const UserLoginForm = (props) => {
+  const router = useRouter();
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
-  const onLogin = () => {
-
-    console.log("userName",userName);
-    console.log("password",password);
+  const ref = useRef(null);
+  const onLogin = async (e) => {
+    let user = await userLogin(userName, password);
+    console.log(user?.data?.data?.token)
+    localStorage.setItem("username", user?.data?.data?.token)
+    if(!user?.data?.error){
+      router.push('/landing-page')
+    }
   }
   const handleInput = (e, value) => {
     if(value === "Username"){
