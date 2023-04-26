@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import addVideo from "./ApiCalls/addVideo";
 import getVideos from "./ApiCalls/getVideos";
+import Link from "next/link";
 const LandingPage = () => {
   const [videoName, setVideoName] = useState("");
   const [videos, setVideos] = useState([])
@@ -38,6 +39,7 @@ const LandingPage = () => {
         </div>
       }
       <button onClick={addVideoFunc}>Add Video</button>
+      <Link href='/websocket'>Websocket</Link>
     </div>
   )
 }

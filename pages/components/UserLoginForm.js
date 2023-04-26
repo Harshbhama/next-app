@@ -12,8 +12,13 @@ const UserLoginForm = (props) => {
   const ref = useRef(null);
   const onLogin = async (e) => {
     let user = await userLogin(userName, password);
+    console.log(user?.data?.data?.first_name)
     console.log(user?.data?.data?.token)
-    localStorage.setItem("username", user?.data?.data?.token)
+    let usernameObj = {
+      token: user?.data?.data?.token,
+      firstName: user?.data?.data?.first_name
+    }
+    localStorage.setItem("username", JSON.stringify(usernameObj))
     if(!user?.data?.error){
       router.push('/landing-page')
     }
